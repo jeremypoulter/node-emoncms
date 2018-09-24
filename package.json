@@ -2,7 +2,7 @@
   "name": "emoncms",
   "version": "1.0.0",
   "description": "Node.JS library for comunicting with EmonCMS",
-  "main": "main/emoncms.js",
+  "main": "lib/emoncms.js",
   "files": [
     "lib/",
     "LICENSE"
