@@ -9,11 +9,12 @@ describe("#emoncms", function() {
   beforeEach(() => {
     nock("http://emoncms.org/")
       .get("/input/post")
+      .query(true)
       .reply(200, "{\"success\": true}");
   });
 
   it("should post full JSON data", function() {
-    var emoncms = new EmonCMS("access", "http://emoncms.org/");
+    var emoncms = new EmonCMS("access", "http://emoncms.org");
     emoncms.nodegroup = "test";
     emoncms.datatype = "fulljson";
     emoncms.post({
@@ -23,7 +24,7 @@ describe("#emoncms", function() {
         temp1: 22.1
       }
     }).then((ret) => {
-      expect(ret.success).to.equal(true);
+      expect(ret.payload.success).to.equal(true);
     });
   });
 });
